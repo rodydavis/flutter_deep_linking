@@ -1,4 +1,4 @@
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as fluro;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -8,48 +8,48 @@ import 'home/screen.dart';
 import 'settings/screen.dart';
 
 class Routes {
-  static void configureRoutes(Router router) {
-    router.notFoundHandler = Handler(handlerFunc: (context, params) {
+  static void configureRoutes(fluro.Router router) {
+    router.notFoundHandler = fluro.Handler(handlerFunc: (context, params) {
       debugPrint("ROUTE WAS NOT FOUND !!!");
       return RouteNotFound();
     });
     router.define(
       '/',
-      handler: Handler(handlerFunc: (_, params) => HomeScreen()),
+      handler: fluro.Handler(handlerFunc: (_, params) => HomeScreen()),
     );
     router.define(
       '/home',
-      transitionType: TransitionType.materialFullScreenDialog,
-      handler: Handler(handlerFunc: (_, params) {
+      transitionType: fluro.TransitionType.materialFullScreenDialog,
+      handler: fluro.Handler(handlerFunc: (_, params) {
         return HomeScreen();
       }),
     );
     router.define(
       '/account',
-      transitionType: TransitionType.materialFullScreenDialog,
-      handler: Handler(handlerFunc: (_, params) {
+      transitionType: fluro.TransitionType.materialFullScreenDialog,
+      handler: fluro.Handler(handlerFunc: (_, params) {
         return AccountScreen();
       }),
     );
     router.define(
       '/account/:id',
-      transitionType: TransitionType.materialFullScreenDialog,
-      handler: Handler(handlerFunc: (_, params) {
+      transitionType: fluro.TransitionType.materialFullScreenDialog,
+      handler: fluro.Handler(handlerFunc: (_, params) {
         String id = params["id"]?.first;
         return AccountScreen(id: id);
       }),
     );
     router.define(
       '/about',
-      transitionType: TransitionType.materialFullScreenDialog,
-      handler: Handler(handlerFunc: (_, params) {
+      transitionType: fluro.TransitionType.materialFullScreenDialog,
+      handler: fluro.Handler(handlerFunc: (_, params) {
         return AboutScreen();
       }),
     );
     router.define(
       '/settings',
-      transitionType: TransitionType.materialFullScreenDialog,
-      handler: Handler(handlerFunc: (_, params) {
+      transitionType: fluro.TransitionType.materialFullScreenDialog,
+      handler: fluro.Handler(handlerFunc: (_, params) {
         return SettingsScreen();
       }),
     );
